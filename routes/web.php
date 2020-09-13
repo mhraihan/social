@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/message/store', 'MessageController@store')->name('message.store');
+
 Route::get('/u/{user}', 'ProfileController@index')->name('profile');
 Route::post('/u/follow/', 'ProfileController@follow')->name('profile.flow');
 Route::get('/x', function () {

@@ -12,7 +12,7 @@
                         {{ session('status') }}
                     </div>
                     @endif
-                    <form action="" method="post">
+                    <form action="{{ route('message.store') }}" method="post">
                         @csrf
                         <textarea class="form-control" name="body" id="" rows="3"
                             placeholder="what's on your mind"></textarea>
