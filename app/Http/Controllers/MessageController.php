@@ -35,11 +35,12 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        $message = new Message();
-        $message->body = $request->body;
-        $message->user_id = auth()->user()->id;
-        $message->save();
+        //dd(request()->all());
+        // $message = new Message();
+        // $message->body = $request->body;
+        // $message->user_id = auth()->user()->id;
+        // $message->save();
+        auth()->user()->messages()->create(request()->all());
         return redirect('home')->with('status', 'Statuse updated!');
     }
 
