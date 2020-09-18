@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendEmail;
 use App\Notifications\NewFollower;
 use App\User;
 use Illuminate\Http\Request;
@@ -22,6 +23,7 @@ class ProfileController extends Controller
         if ($request->follow) {
             auth()->user()->following()->attach($request->user);
             User::findOrFail($request->user)->notify(new NewFollower(auth()->user()));
+            SendEmail::dispatch(auth()->user());
         } else {
             auth()->user()->following()->detach($request->user);
         }
